@@ -22,17 +22,39 @@ At **WeDo Solutions**, I'm part of the team building and running the infrastruct
 
 ---
 
-## 🏗️ Selected Work
+## 🏗️ Systems I've Worked On
 
-*Professional projects at WeDo Solutions. Code is private (client work); summaries describe my engineering contribution.*
+*Production services for public-sector platforms at WeDo Solutions. Code is private (client work). These services were designed by my tech lead; my role covers local deployment, validation, and release sign-off before handoff to our deployment team for staging and production.*
 
-**Real-Time Traffic Data Platform** \
-Designed and containerized a Python pipeline that ingests a live traffic API and pushes processed, downstream-ready data on scheduled cadences. Built supporting API services (viewport queries, health, stats) and an operations dashboard. Deployed to managed Kubernetes (OCI OKE) via Kustomize overlays with secrets management, automated TLS, and a pytest suite covering core invariants. \
-*Python · Docker · Kubernetes (OKE) · Kustomize · OCI · REST APIs*
+### 🚦 Nationwide Real-Time Traffic Pipeline
+> A Python service that converts a live traffic feed covering all of Saudi Arabia into GPS probe data for a downstream mapping platform, refreshed every 5 minutes. It is containerized and deployed to OCI managed Kubernetes.
 
-**Secure Data Warehouse REST API**  \
-Built a read-only REST inquiry service (Java 21, Spring Boot) over a Kerberos-secured data warehouse on Cloudera Impala. Contract-first (OpenAPI 3.1) with every response schema-validated in tests; implemented keyset pagination with signed HMAC cursors, per-client rate limiting, RFC 9457 error handling, conditional GETs (ETag), and bilingual responses. Enforced scope-based access control with PII protected at the query layer. Shipped as a Helm-deployed Kubernetes service — non-root, read-only root filesystem, network policies, autoscaling, Prometheus metrics, and a GitHub Actions CI pipeline with image scanning.  \
-*Java · Spring Boot · Kubernetes · Helm · Kerberos · Cloudera Impala · OpenAPI · GitHub Actions · Prometheus*
+**My role:**
+- Stood up and ran the full service locally (container build, runtime configuration, dry-run mode)
+- Performed functional and sanity validation of the pipeline output before release
+- Obtained sign-off and handed the release off for staging/production deployment
+
+`Python` `Docker` `Kubernetes (OKE)` `Kustomize` `OCI`
+
+### 🔐 Secure Data Warehouse REST API
+> A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
+
+**My role:**
+- Deployed and ran the service locally against the warehouse, including Kerberos keytab-based authentication
+- Validated API behavior and responses against the OpenAPI contract
+- Obtained sign-off and handed the release off for staging/production deployment
+
+`Java` `Spring Boot` `Kerberos` `Cloudera Impala` `OpenAPI` `Helm`
+
+### 🛠️ Kerberos Impala SQL CLI
+> A Java command-line tool that lets automated jobs query a Kerberos-secured warehouse using keytab authentication, with no passwords and no `kinit`.
+
+**My role:**
+- Set up and configured the tool locally and on the jump box
+- Verified end-to-end connectivity and authentication, and ran validation queries
+- Handed it off for team use after sign-off
+
+`Java` `Kerberos` `JDBC` `TLS` `CLI Tooling`
 
 ---
 
