@@ -31,11 +31,12 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 > A Python service that converts a live traffic feed covering all of Saudi Arabia into GPS probe data for a downstream mapping platform, refreshed every 5 minutes. It is containerized and deployed to OCI managed Kubernetes.
 
 **My role:**
-- Stood up and ran the full service locally (container build, runtime configuration, dry-run mode)
-- Performed functional and sanity validation of the pipeline output before release
-- Obtained sign-off and handed the release off for staging/production deployment
+- Implemented a network-resilience fix for the data push after a root-cause diagnosis of silently dropped idle connections: shorter request timeouts, a hard per-wave deadline so stalled requests can't block later waves, and TCP keepalive on the HTTP connection pool
+- Added configurable subpath deployment support so the service works behind the API gateway, verified end to end in Docker (including a port-handling redirect bug I found and fixed)
+- Added a graduated OK / Degraded / Error status indicator to the operations dashboard, so minor partial failures are no longer shown as outages
+- Ran the service locally, validated its output, and handed releases off for staging/production
 
-`Python` `Docker` `Kubernetes (OKE)` `Kustomize` `OCI`
+`Python` `Docker` `nginx` `Kubernetes (OKE)` `Kustomize` `OCI`
 
 ### 🔐 Secure Data Warehouse REST API
 > A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
@@ -94,6 +95,19 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Documented the plugin structure and build process for the team
 
 `Kong` `Lua` `Docker` `Kubernetes` `Kong Ingress Controller` `OCI`
+
+---
+
+### 🛰️ Geospatial Data Sync Pipelines (Airflow)
+> Apache Airflow DAGs that sync large satellite-derived geospatial datasets (millions of features each) from PostgreSQL/PostGIS into a GIS visualization platform.
+
+**My role:**
+- Authored the DAGs for a new quarterly satellite dataset series (roads, buildings, greenery, centerlines, construction waste, and more), each with its own attribute mapping and filter configuration
+- Diagnosed and fixed request-size failures (HTTP 413) by adding byte-aware batching and tuning the batch cap to the platform's observed 1 MB limit
+- Simplified oversized geometries at the source with PostGIS topology-preserving simplification, cutting the worst-case payload from 2.37M to 594K characters
+- Fixed schema, case-sensitivity, and filter-cardinality bugs that were causing silent import failures
+
+`Apache Airflow` `Python` `PostgreSQL` `PostGIS` `SQL` `REST APIs` `Geospatial`
 
 ---
 
