@@ -25,7 +25,7 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ## 🏗️ Systems I've Worked On
 
-*Production services for public-sector platforms at WeDo Solutions. Code is private (client work). These services were designed by my tech lead; my role covers local deployment, validation, and release sign-off before handoff to our deployment team for staging and production.*
+*Production services for public-sector platforms at WeDo Solutions. Code is private (client work). Most are designed by my tech lead; my specific role on each is listed below.*
 
 ### 🚦 Nationwide Real-Time Traffic Pipeline
 > A Python service that converts a live traffic feed covering all of Saudi Arabia into GPS probe data for a downstream mapping platform, refreshed every 5 minutes. It is containerized and deployed to OCI managed Kubernetes.
@@ -56,6 +56,20 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Handed it off for team use after sign-off
 
 `Java` `Kerberos` `JDBC` `TLS` `CLI Tooling`
+
+---
+
+### 📡 Real-Time Road Traffic Subscriber
+> A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
+
+**My role:**
+- Integrated a Python-based service health monitor into the service, ported from an existing internal monitor
+- Fixed the Teams/WhatsApp alerting pipeline
+- Stabilized data submission to the mapping platform at ~7.3 posts/sec
+- Stabilized the Kubernetes staging deployment
+- Kept the staging and main branches aligned, resolving merge conflicts to preserve Kong API Gateway subpath routing
+
+`Node.js` `Koa` `Google Cloud Pub/Sub` `Docker` `Kubernetes` `Kong` `Prometheus`
 
 ---
 
