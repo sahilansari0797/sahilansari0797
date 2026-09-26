@@ -8,10 +8,10 @@ I didn't start in software. I hold a **Mechanical Engineering** degree and began
 
 ## 🛠️ What I work with
 
-**Orchestration & Containers:** Kubernetes (k3s), Docker
-**API & Backend:** Kong API Gateway, Node.js / Koa.js, PostgreSQL, Elasticsearch
-**Observability:** Prometheus, Grafana
-**Cloud & Data:** Oracle Cloud Infrastructure (OCI), Cloudera Data Platform (CDH)
+**Orchestration & Containers:** Kubernetes (k3s), Docker \
+**API & Backend:** Kong API Gateway, Node.js / Koa.js, PostgreSQL, Elasticsearch \
+**Observability:** Prometheus, Grafana \
+**Cloud & Data:** Oracle Cloud Infrastructure (OCI), Cloudera Data Platform (CDH) \
 **Foundations:** Linux, Git, networking, Bash
 
 ---
