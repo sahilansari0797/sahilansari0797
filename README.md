@@ -30,6 +30,10 @@ At **WeDo Solutions**, I'm part of the team building and running the infrastruct
 Designed and containerized a Python pipeline that ingests a live traffic API and pushes processed, downstream-ready data on scheduled cadences. Built supporting API services (viewport queries, health, stats) and an operations dashboard. Deployed to managed Kubernetes (OCI OKE) via Kustomize overlays with secrets management, automated TLS, and a pytest suite covering core invariants. \
 *Python · Docker · Kubernetes (OKE) · Kustomize · OCI · REST APIs*
 
+**Secure Data Warehouse REST API**  \
+Built a read-only REST inquiry service (Java 21, Spring Boot) over a Kerberos-secured data warehouse on Cloudera Impala. Contract-first (OpenAPI 3.1) with every response schema-validated in tests; implemented keyset pagination with signed HMAC cursors, per-client rate limiting, RFC 9457 error handling, conditional GETs (ETag), and bilingual responses. Enforced scope-based access control with PII protected at the query layer. Shipped as a Helm-deployed Kubernetes service — non-root, read-only root filesystem, network policies, autoscaling, Prometheus metrics, and a GitHub Actions CI pipeline with image scanning.  \
+*Java · Spring Boot · Kubernetes · Helm · Kerberos · Cloudera Impala · OpenAPI · GitHub Actions · Prometheus*
+
 ---
 
 ## 🌱 Currently
