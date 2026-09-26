@@ -61,16 +61,6 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 `Python` `Docker` `nginx` `Kubernetes (OKE)` `Kustomize` `OCI`
 
-### 🧩 Custom Kong API Gateway Plugins
-> A repository of custom Lua plugins for the company's Kong API Gateway, packaged into a single Docker image and deployed through the Kong Ingress Controller on Oracle Kubernetes Engine.
-
-**My role:**
-- Set up the repository and its Docker packaging for Kong's plugin path conventions
-- Developed a custom URL-rewriter plugin in Lua, including refactoring its response-header URL handling
-- Documented the plugin structure and build process for the team
-
-`Kong` `Lua` `Docker` `Kubernetes` `Kong Ingress Controller` `OCI`
-
 ### 🔐 Secure Data Warehouse REST API
 > A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
 
