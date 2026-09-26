@@ -73,6 +73,18 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ---
 
+### 🗺️ Live Traffic Visualisation Platform
+> Ingests a commercial live-traffic feed for Saudi Arabia behind an authenticated nginx reverse proxy and renders it on two web map clients. Decodes protobuf data and OpenLR location references in the browser, maps each flow onto real OpenStreetMap road geometry, and uses a Python A* map-matcher to recover road segments the vendor didn't tag.
+
+**My role:**
+- Stood up and ran the viewers and proxy locally
+- Validated the rendered traffic data and endpoints before release
+- Obtained sign-off and handed the release off for deployment
+
+`nginx` `JavaScript` `Protobuf` `OpenLR` `OpenStreetMap` `Leaflet` `Python` `Node.js`
+
+---
+
 ## 🌱 Currently
 
 - Going deeper on **Kubernetes internals** and **platform engineering**
