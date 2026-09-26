@@ -26,8 +26,8 @@ At **WeDo Solutions**, I'm part of the team building and running the infrastruct
 
 *Professional projects at WeDo Solutions. Code is private (client work); summaries describe my engineering contribution.*
 
-**Real-Time Traffic Data Platform**
-Designed and containerized a Python pipeline that ingests a live traffic API and pushes processed, downstream-ready data on scheduled cadences. Built supporting API services (viewport queries, health, stats) and an operations dashboard. Deployed to managed Kubernetes (OCI OKE) via Kustomize overlays with secrets management, automated TLS, and a pytest suite covering core invariants.
+**Real-Time Traffic Data Platform** \
+Designed and containerized a Python pipeline that ingests a live traffic API and pushes processed, downstream-ready data on scheduled cadences. Built supporting API services (viewport queries, health, stats) and an operations dashboard. Deployed to managed Kubernetes (OCI OKE) via Kustomize overlays with secrets management, automated TLS, and a pytest suite covering core invariants. \
 *Python · Docker · Kubernetes (OKE) · Kustomize · OCI · REST APIs*
 
 ---
