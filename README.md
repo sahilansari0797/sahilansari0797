@@ -27,6 +27,29 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 *Production services for public-sector platforms at WeDo Solutions. Code is private (client work). Most are designed by my tech lead; my specific role on each is listed below.*
 
+### 📡 Real-Time Road Traffic Subscriber
+> A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
+
+**My role:**
+- Integrated a Python-based service health monitor into the service, ported from an existing internal monitor
+- Fixed the Teams/WhatsApp alerting pipeline
+- Stabilized data submission to the mapping platform at ~7.3 posts/sec
+- Stabilized the Kubernetes staging deployment
+- Kept the staging and main branches aligned, resolving merge conflicts to preserve Kong API Gateway subpath routing
+
+`Node.js` `Koa` `Google Cloud Pub/Sub` `Docker` `Kubernetes` `Kong` `Prometheus`
+
+### 🛰️ Geospatial Data Sync Pipelines (Airflow)
+> Apache Airflow DAGs that sync large satellite-derived geospatial datasets (millions of features each) from PostgreSQL/PostGIS into a GIS visualization platform.
+
+**My role:**
+- Authored the DAGs for a new quarterly satellite dataset series (roads, buildings, greenery, centerlines, construction waste, and more), each with its own attribute mapping and filter configuration
+- Diagnosed and fixed request-size failures (HTTP 413) by adding byte-aware batching and tuning the batch cap to the platform's observed 1 MB limit
+- Simplified oversized geometries at the source with PostGIS topology-preserving simplification, cutting the worst-case payload from 2.37M to 594K characters
+- Fixed schema, case-sensitivity, and filter-cardinality bugs that were causing silent import failures
+
+`Apache Airflow` `Python` `PostgreSQL` `PostGIS` `SQL` `REST APIs` `Geospatial`
+
 ### 🚦 Nationwide Real-Time Traffic Pipeline
 > A Python service that converts a live traffic feed covering all of Saudi Arabia into GPS probe data for a downstream mapping platform, refreshed every 5 minutes. It is containerized and deployed to OCI managed Kubernetes.
 
@@ -37,6 +60,16 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Ran the service locally, validated its output, and handed releases off for staging/production
 
 `Python` `Docker` `nginx` `Kubernetes (OKE)` `Kustomize` `OCI`
+
+### 🧩 Custom Kong API Gateway Plugins
+> A repository of custom Lua plugins for the company's Kong API Gateway, packaged into a single Docker image and deployed through the Kong Ingress Controller on Oracle Kubernetes Engine.
+
+**My role:**
+- Set up the repository and its Docker packaging for Kong's plugin path conventions
+- Developed a custom URL-rewriter plugin in Lua, including refactoring its response-header URL handling
+- Documented the plugin structure and build process for the team
+
+`Kong` `Lua` `Docker` `Kubernetes` `Kong Ingress Controller` `OCI`
 
 ### 🔐 Secure Data Warehouse REST API
 > A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
@@ -57,58 +90,6 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Handed it off for team use after sign-off
 
 `Java` `Kerberos` `JDBC` `TLS` `CLI Tooling`
-
----
-
-### 📡 Real-Time Road Traffic Subscriber
-> A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
-
-**My role:**
-- Integrated a Python-based service health monitor into the service, ported from an existing internal monitor
-- Fixed the Teams/WhatsApp alerting pipeline
-- Stabilized data submission to the mapping platform at ~7.3 posts/sec
-- Stabilized the Kubernetes staging deployment
-- Kept the staging and main branches aligned, resolving merge conflicts to preserve Kong API Gateway subpath routing
-
-`Node.js` `Koa` `Google Cloud Pub/Sub` `Docker` `Kubernetes` `Kong` `Prometheus`
-
----
-
-### 🗺️ Live Traffic Visualisation Platform
-> Ingests a commercial live-traffic feed for Saudi Arabia behind an authenticated nginx reverse proxy and renders it on two web map clients. Decodes protobuf data and OpenLR location references in the browser, maps each flow onto real OpenStreetMap road geometry, and uses a Python A* map-matcher to recover road segments the vendor didn't tag.
-
-**My role:**
-- Stood up and ran the viewers and proxy locally
-- Validated the rendered traffic data and endpoints before release
-- Obtained sign-off and handed the release off for deployment
-
-`nginx` `JavaScript` `Protobuf` `OpenLR` `OpenStreetMap` `Leaflet` `Python` `Node.js`
-
----
-
-### 🧩 Custom Kong API Gateway Plugins
-> A repository of custom Lua plugins for the company's Kong API Gateway, packaged into a single Docker image and deployed through the Kong Ingress Controller on Oracle Kubernetes Engine.
-
-**My role:**
-- Set up the repository and its Docker packaging for Kong's plugin path conventions
-- Developed a custom URL-rewriter plugin in Lua, including refactoring its response-header URL handling
-- Documented the plugin structure and build process for the team
-
-`Kong` `Lua` `Docker` `Kubernetes` `Kong Ingress Controller` `OCI`
-
----
-
-### 🛰️ Geospatial Data Sync Pipelines (Airflow)
-> Apache Airflow DAGs that sync large satellite-derived geospatial datasets (millions of features each) from PostgreSQL/PostGIS into a GIS visualization platform.
-
-**My role:**
-- Authored the DAGs for a new quarterly satellite dataset series (roads, buildings, greenery, centerlines, construction waste, and more), each with its own attribute mapping and filter configuration
-- Diagnosed and fixed request-size failures (HTTP 413) by adding byte-aware batching and tuning the batch cap to the platform's observed 1 MB limit
-- Simplified oversized geometries at the source with PostGIS topology-preserving simplification, cutting the worst-case payload from 2.37M to 594K characters
-- Fixed schema, case-sensitivity, and filter-cardinality bugs that were causing silent import failures
-
-`Apache Airflow` `Python` `PostgreSQL` `PostGIS` `SQL` `REST APIs` `Geospatial`
-
 ---
 
 ## 🌱 Currently
