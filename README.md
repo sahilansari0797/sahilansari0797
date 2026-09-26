@@ -89,9 +89,9 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 > A repository of custom Lua plugins for the company's Kong API Gateway, packaged into a single Docker image and deployed through the Kong Ingress Controller on Oracle Kubernetes Engine.
 
 **My role:**
-- Built and ran the custom Kong image locally with the plugins loaded
-- Validated plugin behavior on requests through the gateway
-- Handed the image off for deployment to the Kubernetes cluster
+- Set up the repository and its Docker packaging for Kong's plugin path conventions
+- Developed a custom URL-rewriter plugin in Lua, including refactoring its response-header URL handling
+- Documented the plugin structure and build process for the team
 
 `Kong` `Lua` `Docker` `Kubernetes` `Kong Ingress Controller` `OCI`
 
