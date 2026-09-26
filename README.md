@@ -95,6 +95,7 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ## 🌱 Currently
 
+- **Cloudera Technical Professional Accreditation** (earned Aug 2026)
 - Going deeper on **Kubernetes internals** and **platform engineering**
 - Preparing for the **Certified Kubernetes Administrator (CKA)**
 - Sharpening my **backend development** skills
