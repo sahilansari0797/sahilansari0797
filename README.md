@@ -90,6 +90,7 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Handed it off for team use after sign-off
 
 `Java` `Kerberos` `JDBC` `TLS` `CLI Tooling`
+
 ---
 
 ## 🌱 Currently
