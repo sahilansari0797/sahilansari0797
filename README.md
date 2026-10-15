@@ -25,7 +25,34 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ## 🏗️ Systems I've Worked On
 
-*Production services for public-sector platforms at WeDo Solutions. Code is private (client work). Most are designed by my tech lead; my specific role on each is listed below.*
+*Production services for public-sector platforms at WeDo Solutions. Code is private (client work). Some are designed by my tech lead and some are mine end to end; my specific role on each is listed below.*
+
+### 📊 NCIM Analytics Dashboard Platform
+> A self-hosted Apache Superset deployment serving business and data-platform dashboards over a Kerberos-secured Impala warehouse. Five dashboards, 73 charts, 34 datasets, shipped as a validated export bundle so every environment gets exactly the same thing.
+
+**Built and maintained by me:**
+- Built the container image and Kubernetes deployment on the Apache Superset Operator, after migrating off a vendored Helm chart; the operator owns migrations, init and upgrades as one lifecycle
+- Wrote the init step that imports the dashboard bundle, provisions the snapshot database, and creates a read-only viewer role — idempotent, so repeat deploys don't duplicate or overwrite
+- Solved the heavy-query problem with a two-tier tile design: live tiles query Impala with results cached in Redis, while expensive history-table scans run once in a loader Job and land as small aggregates in PostgreSQL
+- Kerberos from a mounted keytab with no `kinit`, no sidecar and no cron, plus a TLS fix that keeps full CA-chain verification while skipping the hostname check only when connecting by IP
+- Hardened the internet-facing deployment: no anonymous access or self-registration, login rate limiting, CSRF and security headers, read-only connections, and SQL Lab, embedding and file uploads disabled
+- CI/CD pipeline with a build step, a human approval gate, custom-resource apply, rollout wait and an optional snapshot-loader run
+
+`Apache Superset` `Kubernetes` `Docker` `Python` `PostgreSQL` `Redis` `Kerberos` `Cloudera Impala` `GitHub Actions`
+
+### 🔌 Read-Only MCP Server for a Kerberos-Secured Warehouse
+> An MCP server that lets LLM clients query a Kerberos-secured Impala data warehouse safely. Private-network only, read-only by construction. Adapted from Cloudera's open-source Iceberg MCP server (Apache 2.0) and substantially reworked.
+
+**Built and maintained by me:**
+- Replaced LDAP password auth with Kerberos GSSAPI from a keytab, over binary HiveServer2 with TLS — no password setting exists anywhere in the codebase
+- Hardened the read-only guard: single statement, allowlisted leading keyword, write/DDL keywords rejected anywhere in the query
+- Added a result cache keyed on each table's last successful load, so answers are never stale, plus single-flight de-duplication of identical concurrent queries
+- Added a connection pool, worker threads, row caps, query time limits, and a `SELECT *` guard tuned for 300+ column columnar tables
+- Added streamable HTTP transport with liveness/readiness probes so the service can run stateless behind replicas, alongside stdio for jumpbox use
+- Versioned JSON output contract with per-query freshness metadata; CI for tests and lint, container build, and a deployment contract for the chart owner
+- 121 tests, Dockerized, live-tested on the jumpbox
+
+`Python` `MCP` `Kerberos/GSSAPI` `Cloudera Impala` `Docker` `TLS` `GitHub Actions` `pytest`
 
 ### 📡 Real-Time Road Traffic Subscriber
 > A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
