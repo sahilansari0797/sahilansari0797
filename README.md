@@ -28,17 +28,17 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 *Production services for public-sector platforms at WeDo Solutions. Code is private (client work). Some are designed by my tech lead and some are mine end to end; my specific role on each is listed below.*
 
 ### 📊 NCIM Analytics Dashboard Platform
-> A self-hosted Apache Superset deployment serving business and data-platform dashboards over a Kerberos-secured Impala warehouse. Five dashboards, 73 charts, 34 datasets, shipped as a validated export bundle so every environment gets exactly the same thing.
+> A self-hosted Apache Superset platform on Kubernetes serving business and data-platform dashboards over a Kerberos-secured Impala warehouse — 6 live dashboards and 43 datasets, plus an MCP endpoint that lets Claude build new charts and dashboards by prompt.
 
 **Built and maintained by me:**
-- Built the container image and Kubernetes deployment on the Apache Superset Operator, after migrating off a vendored Helm chart; the operator owns migrations, init and upgrades as one lifecycle
-- Wrote the init step that imports the dashboard bundle, provisions the snapshot database, and creates a read-only viewer role — idempotent, so repeat deploys don't duplicate or overwrite
-- Solved the heavy-query problem with a two-tier tile design: live tiles query Impala with results cached in Redis, while expensive history-table scans run once in a loader Job and land as small aggregates in PostgreSQL
+- Built the container image and Kubernetes deployment on the Apache Superset Operator; an idempotent init step creates the admin, a read-only viewer role and a dedicated MCP service user on every deploy
+- Built pipeline-operations and platform-health dashboards: load status and a 24-hour run timeline per layer, data-quality rejections across 100+ tables, table freshness against each table's usual load interval, and Iceberg storage health read from metadata tables at about 1/50 the cost of scanning files
+- Added Superset's MCP server so Claude can list data, run read-only SQL and draft dashboards — signed, expiring per-person tokens, a non-admin service identity, SELECT-only SQL, and everything saved as a draft until an admin publishes it
+- Moved every chart to live Impala queries with tiered Redis caching (1 h for operations, 24 h for business views), retiring a separate snapshot database so there is one source of truth
 - Kerberos from a mounted keytab with no `kinit`, no sidecar and no cron, plus a TLS fix that keeps full CA-chain verification while skipping the hostname check only when connecting by IP
-- Hardened the internet-facing deployment: no anonymous access or self-registration, login rate limiting, CSRF and security headers, read-only connections, and SQL Lab, embedding and file uploads disabled
-- CI/CD pipeline with a build step, a human approval gate, custom-resource apply, rollout wait and an optional snapshot-loader run
+- Hardened the internet-facing deployment: no anonymous access or self-registration, login rate limiting, CSRF and security headers, read-only connections, and embedding and file uploads disabled
 
-`Apache Superset` `Kubernetes` `Docker` `Python` `PostgreSQL` `Redis` `Kerberos` `Cloudera Impala` `GitHub Actions`
+`Apache Superset` `Kubernetes` `Helm` `Docker` `Python` `Redis` `Kerberos` `Cloudera Impala` `Apache Iceberg` `MCP`
 
 ### 🔌 Read-Only MCP Server for a Kerberos-Secured Warehouse
 > An MCP server that lets LLM clients query a Kerberos-secured Impala data warehouse safely. Private-network only, read-only by construction. Adapted from Cloudera's open-source Iceberg MCP server (Apache 2.0) and substantially reworked.
@@ -53,6 +53,19 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - 121 tests, Dockerized, live-tested on the jumpbox
 
 `Python` `MCP` `Kerberos/GSSAPI` `Cloudera Impala` `Docker` `TLS` `GitHub Actions` `pytest`
+
+### 🔐 Secure Data Warehouse REST API
+> A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
+
+**My role:** my tech lead built the first resource; I took it to production readiness and extended it from 1 resource to 14.
+- Built a manifest-driven engine that serves 13 new resources (2,200+ columns, 250+ filters) from validated descriptors instead of hand-writing each one; the catalogue is checked at start-up and the app refuses to start on a bad entry
+- Generated SQL uses only bound parameters and identifiers from that validated catalogue, so caller input never reaches a statement as text
+- Cut a single-day query from ~150 s to ~5 s by pushing the date filter inside the source query, and added two-phase paging and optional column selection for very wide tables
+- Fixed correctness issues before the first deploy: exact counts that always match paging, timeouts reported as 504 instead of "warehouse down", and empty tables returning an empty page
+- Hardened deployment: environment configs that fail closed, a network policy that refuses to render an allow-all rule, and the keytab supplied by the cluster instead of baked into the image
+- Added a one-call smoke test that reports which layer is broken (ingress, gateway headers, Kerberos, TLS or query)
+
+`Java` `Spring Boot` `Kerberos` `Cloudera Impala` `OpenAPI` `Kubernetes` `Helm` `Bruno`
 
 ### 📡 Real-Time Road Traffic Subscriber
 > A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
@@ -87,16 +100,6 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 - Ran the service locally, validated its output, and handed releases off for staging/production
 
 `Python` `Docker` `nginx` `Kubernetes (OKE)` `Kustomize` `OCI`
-
-### 🔐 Secure Data Warehouse REST API
-> A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
-
-**My role:**
-- Deployed and ran the service locally against the warehouse, including Kerberos keytab-based authentication
-- Validated API behavior and responses against the OpenAPI contract
-- Obtained sign-off and handed the release off for staging/production deployment
-
-`Java` `Spring Boot` `Kerberos` `Cloudera Impala` `OpenAPI` `Helm`
 
 ### 🛠️ Kerberos Impala SQL CLI
 > A Java command-line tool that lets automated jobs query a Kerberos-secured warehouse using keytab authentication, with no passwords and no `kinit`.
