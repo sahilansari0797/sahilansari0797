@@ -6,6 +6,8 @@
 
 I didn't start in software. I hold a **Mechanical Engineering** degree and began in CAD design (AutoCAD, SolidWorks, ANSYS), then moved into IT and GIS work on major national projects before finding my home in DevOps. That path taught me systems thinking and precision under real-world constraints, and it shapes how I approach infrastructure today: understand the whole system first, then make it robust.
 
+<img src="assets/career-timeline.png" alt="Career path: mechanical engineering to infrastructure and DevOps" width="100%">
+
 ---
 
 ## 🛠️ What I work with
@@ -80,6 +82,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 ### 📡 Real-Time Road Traffic Subscriber
 > A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
 
+<img src="assets/arch-traffic-subscriber.png" alt="Real-time road traffic subscriber architecture" width="100%">
+
 **My role:**
 - Integrated a Python-based service health monitor into the service, ported from an existing internal monitor
 - Fixed the Teams/WhatsApp alerting pipeline
@@ -92,6 +96,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 ### 🛰️ Geospatial Data Sync Pipelines (Airflow)
 > Apache Airflow DAGs that sync large satellite-derived geospatial datasets (millions of features each) from PostgreSQL/PostGIS into a GIS visualization platform.
 
+<img src="assets/arch-airflow-pipelines.png" alt="Geospatial data sync pipelines architecture" width="100%">
+
 **My role:**
 - Authored the DAGs for a new quarterly satellite dataset series (roads, buildings, greenery, centerlines, construction waste, and more), each with its own attribute mapping and filter configuration
 - Diagnosed and fixed request-size failures (HTTP 413) by adding byte-aware batching and tuning the batch cap to the platform's observed 1 MB limit
@@ -103,6 +109,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 ### 🚦 Nationwide Real-Time Traffic Pipeline
 > A Python service that converts a live traffic feed covering all of Saudi Arabia into GPS probe data for a downstream mapping platform, refreshed every 5 minutes. It is containerized and deployed to OCI managed Kubernetes.
 
+<img src="assets/arch-traffic-pipeline.png" alt="Nationwide real-time traffic pipeline architecture" width="100%">
+
 **My role:**
 - Implemented a network-resilience fix for the data push after a root-cause diagnosis of silently dropped idle connections: shorter request timeouts, a hard per-wave deadline so stalled requests can't block later waves, and TCP keepalive on the HTTP connection pool
 - Added configurable subpath deployment support so the service works behind the API gateway, verified end to end in Docker (including a port-handling redirect bug I found and fixed)
@@ -113,6 +121,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ### 🛠️ Kerberos Impala SQL CLI
 > A Java command-line tool that lets automated jobs query a Kerberos-secured warehouse using keytab authentication, with no passwords and no `kinit`.
+
+<img src="assets/arch-kerberos-cli.png" alt="Kerberos Impala SQL CLI architecture" width="100%">
 
 **My role:**
 - Set up and configured the tool locally and on the jump box
