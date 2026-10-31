@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="From gears to clusters" width="100%"></p>
+
 # Hi, I'm Sahil 👋
 
 **Infrastructure & DevOps Engineer** based in Riyadh. I work across the infrastructure and services behind production platforms: deploying, validating, and keeping them observable.
@@ -7,6 +9,8 @@ I didn't start in software. I hold a **Mechanical Engineering** degree and began
 ---
 
 ## 🛠️ What I work with
+
+<p><img src="https://skillicons.dev/icons?i=k8s,docker,python,java,spring,nodejs,postgres,redis,prometheus,grafana,nginx,linux,bash,git,githubactions&perline=15" alt="Kubernetes, Docker, Python, Java, Spring, Node.js, PostgreSQL, Redis, Prometheus, Grafana, nginx, Linux, Bash, Git, GitHub Actions"></p>
 
 **Orchestration & Containers:** Kubernetes (k3s), Docker \
 **API & Backend:** Kong API Gateway, Node.js / Koa.js, Python, Java, PostgreSQL, Elasticsearch \
@@ -30,6 +34,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 ### 📊 NCIM Analytics Dashboard Platform
 > A self-hosted Apache Superset platform on Kubernetes serving business and data-platform dashboards over a Kerberos-secured Impala warehouse — 6 live dashboards and 43 datasets, plus an MCP endpoint that lets Claude build new charts and dashboards by prompt.
 
+<img src="assets/arch-analytics-platform.png" alt="NCIM Analytics Platform architecture" width="100%">
+
 **Built and maintained by me:**
 - Built the container image and Kubernetes deployment on the Apache Superset Operator; an idempotent init step creates the admin, a read-only viewer role and a dedicated MCP service user on every deploy
 - Built pipeline-operations and platform-health dashboards: load status and a 24-hour run timeline per layer, data-quality rejections across 100+ tables, table freshness against each table's usual load interval, and Iceberg storage health read from metadata tables at about 1/50 the cost of scanning files
@@ -42,6 +48,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ### 🔌 Read-Only MCP Server for a Kerberos-Secured Warehouse
 > An MCP server that lets LLM clients query a Kerberos-secured Impala data warehouse safely. Private-network only, read-only by construction. Adapted from Cloudera's open-source Iceberg MCP server (Apache 2.0) and substantially reworked.
+
+<img src="assets/arch-mcp-server.png" alt="Read-only MCP server architecture" width="100%">
 
 **Built and maintained by me:**
 - Replaced LDAP password auth with Kerberos GSSAPI from a keytab, over binary HiveServer2 with TLS — no password setting exists anywhere in the codebase
@@ -56,6 +64,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ### 🔐 Secure Data Warehouse REST API
 > A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
+
+<img src="assets/arch-rest-api.png" alt="Data Warehouse REST API architecture" width="100%">
 
 **My role:** my tech lead built the first resource; I took it to production readiness and extended it from 1 resource to 14.
 - Built a manifest-driven engine that serves 13 new resources (2,200+ columns, 250+ filters) from validated descriptors instead of hand-writing each one; the catalogue is checked at start-up and the app refuses to start on a bad entry
