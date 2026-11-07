@@ -12,7 +12,7 @@ I didn't start in software. I hold a **Mechanical Engineering** degree and began
 
 ## 🛠️ What I work with
 
-<p><img src="https://skillicons.dev/icons?i=k8s,docker,python,java,spring,nodejs,postgres,redis,prometheus,grafana,nginx,linux,bash,git,githubactions&perline=15" height="40" alt="Kubernetes, Docker, Python, Java, Spring, Node.js, PostgreSQL, Redis, Prometheus, Grafana, nginx, Linux, Bash, Git, GitHub Actions">&nbsp;&nbsp;<img src="assets/skills-cad.svg" height="40" alt="AutoCAD, Ansys"></p>
+<p><img src="https://skillicons.dev/icons?i=k8s,docker,python,java,spring,nodejs,postgres,redis,prometheus,grafana,nginx,linux,bash,git,githubactions&perline=15" height="40" alt="Kubernetes, Docker, Python, Java, Spring, Node.js, PostgreSQL, Redis, Prometheus, Grafana, nginx, Linux, Bash, Git, GitHub Actions">&nbsp;&nbsp;<img src="assets/skills-cad.svg" height="40" alt="AutoCAD, Fusion 360, Ansys"></p>
 
 **Orchestration & Containers:** Kubernetes (k3s), Docker \
 **API & Backend:** Kong API Gateway, Node.js / Koa.js, Python, Java, PostgreSQL, Elasticsearch \
@@ -20,7 +20,7 @@ I didn't start in software. I hold a **Mechanical Engineering** degree and began
 **Cloud & Data:** Oracle Cloud Infrastructure (OCI), Cloudera Data Platform (CDP) \
 **Security & Auth:** Kerberos (keytab-based service auth), TLS \
 **Foundations:** Linux, Git, networking, Bash \
-**Mechanical & CAD:** AutoCAD / AutoCAD Mechanical, SolidWorks, ANSYS, sheet-metal design, 2D drafting and 3D modeling
+**Mechanical & CAD:** AutoCAD / AutoCAD Mechanical, SolidWorks, Fusion 360, ANSYS, sheet-metal design, 2D drafting and 3D modeling
 
 ---
 
