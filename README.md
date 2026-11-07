@@ -133,9 +133,15 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ---
 
+## 🎓 Credentials
+
+- **Cloudera Technical Professional Accreditation**, Cloudera (Aug 2026)
+- **Introduction to Agent Skills**, Claude Academy by Anthropic (Sep 2026) · [verify](https://academy.claude.com/verify/7b86ad5b1fbae6b828eb202942753fb5)
+
+---
+
 ## 🌱 Currently
 
-- **Cloudera Technical Professional Accreditation** (earned Aug 2026)
 - Going deeper on **Kubernetes internals** and **platform engineering**
 - Preparing for the **Certified Kubernetes Administrator (CKA)**
 - Sharpening my **backend development** skills
