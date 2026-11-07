@@ -12,7 +12,7 @@ I didn't start in software. I hold a **Mechanical Engineering** degree and began
 
 ## 🛠️ What I work with
 
-<p><img src="https://skillicons.dev/icons?i=k8s,docker,python,java,spring,nodejs,postgres,redis,prometheus,grafana,nginx,linux,bash,git,githubactions&perline=15" height="40" alt="Kubernetes, Docker, Python, Java, Spring, Node.js, PostgreSQL, Redis, Prometheus, Grafana, nginx, Linux, Bash, Git, GitHub Actions"><img src="assets/skills-cad.svg" height="40" alt="AutoCAD, Fusion 360, Ansys"></p>
+<p><img src="assets/skills.svg" alt="Kubernetes, Docker, Python, Java, Spring, Node.js, PostgreSQL, Redis, Prometheus, Grafana, nginx, Linux, Bash, Git, GitHub Actions, AutoCAD, Fusion 360, Ansys"></p>
 
 **Orchestration & Containers:** Kubernetes (k3s), Docker \
 **API & Backend:** Kong API Gateway, Node.js / Koa.js, Python, Java, PostgreSQL, Elasticsearch \
