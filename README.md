@@ -141,13 +141,6 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ---
 
-## 🧰 Projects
-
-- **[contact-card](https://github.com/sahilansari0797/contact-card)**: a custom, QR-scannable digital contact card, hosted on GitHub Pages.
-- **[sum-service](https://github.com/sahilansari0797/sum-service)**: a simple Node.js API service for testing API environments and integration scenarios.
-
----
-
 ## 📫 Reach me
 
 - **Email:** msahilansari.97@gmail.com · sahil.ansari@wedosolutions.sa
