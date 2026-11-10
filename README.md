@@ -141,14 +141,6 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 ---
 
-## 🌱 Currently
-
-- Going deeper on **Kubernetes internals** and **platform engineering**
-- Preparing for the **Certified Kubernetes Administrator (CKA)**
-- Sharpening my **backend development** skills
-
----
-
 ## 🧰 Projects
 
 - **[contact-card](https://github.com/sahilansari0797/contact-card)**: a custom, QR-scannable digital contact card, hosted on GitHub Pages.
