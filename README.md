@@ -80,6 +80,21 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 `Java` `Spring Boot` `Kerberos` `Cloudera Impala` `OpenAPI` `Kubernetes` `Helm` `Bruno`
 
+### ✅ Medallion Data Validation Framework
+> A read-only framework that proves a national data platform's layers match their source: **Oracle source → Bronze → Silver → Gold**, nearly 380 tables across two waves, with client-ready evidence packs after every run.
+
+<img src="assets/arch-data-validation.png" alt="Medallion data validation framework architecture" width="100%">
+
+**My role:**
+- Built the daily validation runner: one command checks all three layers in order (about 1.5–2 hours), waits for the day's data loads to finish first, writes the evidence workbooks and a summary, and fails loudly if any sheet doesn't pass its own self-check
+- Designed layer-specific checks: row counts and freshness against the source, key reconciliation between layers, and current-vs-historical checks in Gold
+- Kept it strictly read-only and fully audited: the runners accept only read queries and refuse anything that writes, every statement and command is logged, and the database credential is encrypted, never stored in plain text
+- Split heavy source tables (up to 285M rows) into a weekly schedule so the daily runs stay fast
+- Caught problems that row counts alone miss, like a layer running 11–20 days behind while its counts still matched, and reported them to the data team
+- Wrote the validation method document that defines the Pass / Fail / Review rules
+
+`Python` `PowerShell` `SQL` `Cloudera Impala` `Oracle` `Kerberos` `Data Quality`
+
 ### 📡 Real-Time Road Traffic Subscriber
 > A long-running Node.js service that consumes a real-time road-traffic Pub/Sub feed, transforms each message into synthetic GPS probe traces, and submits them to a downstream mapping platform. It includes a live map dashboard, health endpoints, and Prometheus metrics.
 
