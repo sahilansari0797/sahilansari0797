@@ -65,6 +65,19 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 `Python` `MCP` `Kerberos/GSSAPI` `Cloudera Impala` `Docker` `TLS` `GitHub Actions` `pytest`
 
+### 🧾 AI Reporting Module + MCP Connector
+> A bilingual (Arabic / English) reporting service on Kubernetes that turns templates into PDF and Word reports from live platform data. Reports can be run from the web app or from an AI assistant over MCP, always as the signed-in user and within their own data rights.
+
+<img src="assets/arch-reports-mcp.png" alt="AI reporting module and MCP connector architecture" width="100%">
+
+**My role** (team project; teammates built the web UI):
+- Built the **MCP connector**: 14 tools that let Claude list templates, run reports, export PDF/Word and draft new templates in chat, each tool calling the same API, permission checks and audit log as the web app
+- Built **server-side PDF/Word export**, including headless Chromium running on read-only Kubernetes pods and the stored brand logo in every export
+- Moved template authoring to a new schema version and made test queries return the data platform's own error message instead of a generic failure
+- Added ingress routing and documentation for the connector, and a complete Bruno API collection for every endpoint
+
+`Node.js` `MCP` `Next.js` `PostgreSQL` `Redis` `Keycloak` `Chromium` `Kubernetes` `Helm`
+
 ### 🔐 Secure Data Warehouse REST API
 > A contract-first Java/Spring Boot API that gives authorized consumers controlled, paginated access to a Kerberos-secured data warehouse, with scope-based access control and PII kept inside the warehouse by default.
 
