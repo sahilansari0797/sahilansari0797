@@ -166,6 +166,8 @@ At **WeDo Solutions**, I'm part of the team behind the infrastructure for large 
 
 - **Cloudera Technical Professional Accreditation**, Cloudera (Aug 2026)
 - **Introduction to Agent Skills**, Claude Academy by Anthropic (Sep 2026) · [verify](https://academy.claude.com/verify/7b86ad5b1fbae6b828eb202942753fb5)
+- **Building with the Claude API**, Claude Academy by Anthropic (Nov 2026) · [verify](https://academy.claude.com/verify/ccba04b3cd20b45a0db8dcf1fe6f6f26)
+- **Introduction to Model Context Protocol**, Claude Academy by Anthropic (Nov 2026) · [verify](https://academy.claude.com/verify/a9381b0edc29b48ff0f523d76f506cf8)
 
 ---
 
